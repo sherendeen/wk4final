@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myViewModel"
+            type="edu.wk4final.ui.main.MainViewModel" />
+    </data>
+
+<RelativeLayout
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainFragment">
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text='@{safeUnbox(myViewModel.result) == 0.0 ? " Enter Value " : String.valueOf(safeUnbox(myViewModel.result))}'
+        />
+
+    <EditText
+        android:id="@+id/a_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="34dp"
+        android:text="@={myViewModel.field_a}"
+        android:inputType="numberDecimal"
+        />
+
+    <EditText
+        android:id="@+id/b_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="35dp"
+        android:text="@={myViewModel.field_b}"
+        android:inputType="numberDecimal"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/multiply_by"
+/>
+
+    <Button
+        android:id="@+id/btn_equals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="149dp"
+        android:background="@drawable/equals"
+        android:hint="equals"
+        android:onClick="@{() -> myViewModel.doMath()}"
+        android:src="@drawable/equals"
+        tools:visibility="visible"
+        />
+</RelativeLayout>
+</layout>
